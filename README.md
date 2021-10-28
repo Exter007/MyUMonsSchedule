@@ -5,3 +5,7 @@
 2) DON'T FORGET to change your Gmail/Google config. There are only 2 easy steps to do.
 3) You are prompted for your Gmail password while running the script.
 (Version not already tested on Linux distributions)
+
+### In the next versions
+1) Cron ?
+2) Directly download ICS file and add it to google calendar ?
