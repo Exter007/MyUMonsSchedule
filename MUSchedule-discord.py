@@ -20,7 +20,7 @@ __email__ = "200197@umons.ac.be"
 """
 VARIABLES GLOBALES
 """
-discord = Discord(url="https://discord.com/api/webhooks/883736029746577458/ttoG8gs4tNN7HIessyEaSJwCvk1Rg5BP5G_ZM4JpVwXHCc2emFWA3rE3bmysWQG59niJ")
+discord = Discord(url="")
 
 # Adresse mail UMons (matricule@umons.ac.be)
 user = ""
