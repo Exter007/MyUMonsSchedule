@@ -20,6 +20,7 @@ __email__ = "200197@umons.ac.be"
 """
 VARIABLES GLOBALES
 """
+# URL discord webhook (à créer via les param. d'un channel discord)
 discord = Discord(url="")
 
 # Adresse mail UMons (matricule@umons.ac.be)
