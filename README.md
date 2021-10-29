@@ -6,7 +6,9 @@
 3) You are prompted for your Gmail password (*sender only*) while running the script.
 
 \* Just run it in the MyUMonsSchedule folder. You can close the window right after.
+
 (Version not already tested on Linux distributions)
+
 Update 29/10 : Working on Fedora (geckodriver needed too)
 
 ### In the next versions
