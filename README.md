@@ -13,13 +13,13 @@ Update 29/10 : Working on Fedora (geckodriver needed too)
 
 Update 29/10 : Discord module is working.
 
-Update 03/11 : Temp files added instead of "screenshot.png"
-
 Update 30/10 :
   - Website creation (coming soon) including Microsoft connection (UMons account)
   - Creating database (alwaysdata) of users using MUSchedule to send them screenshots
   - Trying to download ics for each user (difficult due to authentification)
   - If we can download ics for each user, the next step is to sync with Google Calendar (cron?/auto?/...?)
+
+Update 03/11 : Temp files added instead of "screenshot.png"
 
 ### In the next versions (outdated)
 1) Cron ?
