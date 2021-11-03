@@ -13,6 +13,12 @@ Update 29/10 : Working on Fedora (geckodriver needed too)
 
 Update 29/10 : Discord module is working.
 
-### In the next versions
+Update 30/10 :
+  - Website creation (coming soon) including Microsoft connection (UMons account)
+  - Creating database (alwaysdata) of users using MUSchedule to send them screenshots
+  - Trying to download ics for each user (difficult due to authentification)
+  - If we can download ics for each user, the next step is to sync with Google Calendar (cron?/auto?/...?)
+
+### In the next versions (outdated)
 1) Cron ?
 2) Directly download ICS file and add it to google calendar ?
