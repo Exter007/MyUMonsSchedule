@@ -8,6 +8,7 @@ import smtplib
 from getpass import getpass
 import imghdr
 from email.message import EmailMessage
+import tempfile
 
 __author__ = "Pierre-Louis D'Agostino"
 __email__ = "200197@umons.ac.be"
@@ -47,22 +48,29 @@ driver.get("https://gestacumons.umons.ac.be/MyUmons/mon_horaire.php")
 driver.set_window_size(1920, 1080)
 driver.find_element(
     By.CLASS_NAME, "fc-agendaWeek-button").click()
-driver.get_screenshot_as_file("./screenshot.png")
+tmp = tempfile.NamedTemporaryFile(suffix=".png", mode='wb')
+png = driver.get_screenshot_as_png()
+tmp.write(png)
+
 driver.quit()
+
+print("Sending email...")
+
+# Send Email (Be carefull to change your Google settings to allow less )
+#Password = getpass()
+newMessage = EmailMessage()
+newMessage['Subject'] = "Horaire "+str(date.today())
+newMessage['From'] = Sender_Email
+newMessage['To'] = Reciever_Email
+newMessage.set_content('Voici l\'horaire de la semaine !')
+image_data = png
+image_type = ".png"
+image_name = "Horaire.png"
 
 print("Sending email... GMail password needed.")
 
 # Send Email (Be carefull to change your Google settings to allow less )
 Password = getpass()
-newMessage = EmailMessage()
-newMessage['Subject'] = "Horaire "+str(date.today())
-newMessage['From'] = Sender_Email
-newMessage['To'] = Reciever_Email
-newMessage.set_content('Voici l\'horaire du jour !')
-with open('./screenshot.png', 'rb') as f:
-    image_data = f.read()
-    image_type = imghdr.what(f.name)
-    image_name = f.name
 newMessage.add_attachment(image_data, maintype='image',
                           subtype=image_type, filename=image_name)
 try:
