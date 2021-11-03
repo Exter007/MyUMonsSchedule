@@ -13,6 +13,8 @@ Update 29/10 : Working on Fedora (geckodriver needed too)
 
 Update 29/10 : Discord module is working.
 
+Update 03/11 : Temp files added instead of "screenshot.png"
+
 Update 30/10 :
   - Website creation (coming soon) including Microsoft connection (UMons account)
   - Creating database (alwaysdata) of users using MUSchedule to send them screenshots
