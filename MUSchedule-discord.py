@@ -7,6 +7,7 @@ from datetime import date
 import smtplib
 from getpass import getpass
 import imghdr
+import sys
 
 from discordwebhook import Discord
 import requests
@@ -48,16 +49,21 @@ print("Finding schedule...")
 # Find schedule and take screenshot
 driver.get("https://gestacumons.umons.ac.be/MyUmons/mon_horaire.php")
 driver.set_window_size(1920, 1080)
-driver.find_element(
-        By.CLASS_NAME, "fc-agendaWeek-button").click()
+if sys.argv[1] == "daily":
+    print("Daily Mode")
+    driver.find_element(By.CLASS_NAME, "fc-agendaDay-button").click()
+else:
+    print("Weekly Mode")
+    driver.find_element(By.CLASS_NAME, "fc-agendaWeek-button").click()
 driver.get_screenshot_as_file("./screenshot.png")
 driver.quit()
 
 print("Sending to discord ...")
 
-newMessage = "Horaire "+str(date.today()) +" "+ str(user)
+newMessage = "Horaire "+str(date.today()) + " " + str(user)
 
-cmd = subprocess.Popen("curl --upload-file ./screenshot.png https://transfer.sh/screenshot.png", stdout=subprocess.PIPE, shell=True)
+cmd = subprocess.Popen(
+    "curl --upload-file ./screenshot.png https://transfer.sh/screenshot.png", stdout=subprocess.PIPE, shell=True)
 out = cmd.communicate()[0].decode("utf-8")
 
 try:
@@ -65,7 +71,7 @@ try:
         embeds=[
             {
                 "title": newMessage,
-                "image": {"url" : out},
+                "image": {"url": out},
             },
         ],
     )

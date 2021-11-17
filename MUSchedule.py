@@ -9,6 +9,7 @@ from getpass import getpass
 import imghdr
 from email.message import EmailMessage
 import tempfile
+import sys
 
 __author__ = "Pierre-Louis D'Agostino"
 __email__ = "200197@umons.ac.be"
@@ -46,8 +47,12 @@ print("Finding schedule...")
 # Find schedule and take screenshot
 driver.get("https://gestacumons.umons.ac.be/MyUmons/mon_horaire.php")
 driver.set_window_size(1920, 1080)
-driver.find_element(
-    By.CLASS_NAME, "fc-agendaWeek-button").click()
+if sys.argv[1] == "daily":
+    print("Daily Mode")
+    driver.find_element(By.CLASS_NAME, "fc-agendaDay-button").click()
+else:
+    print("Weekly Mode")
+    driver.find_element(By.CLASS_NAME, "fc-agendaWeek-button").click()
 tmp = tempfile.NamedTemporaryFile(suffix=".png", mode='wb')
 png = driver.get_screenshot_as_png()
 tmp.write(png)
