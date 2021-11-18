@@ -68,7 +68,7 @@ print("Finding schedule...")
 # Find schedule and take screenshot
 driver.get("https://gestacumons.umons.ac.be/MyUmons/mon_horaire.php")
 driver.set_window_size(1920, 1080)
-if sys.argv[1] == "daily":
+if len(sys.argv) == 2 and sys.argv[1] == "daily":
     print("Daily Mode")
     driver.find_element(By.CLASS_NAME, "fc-agendaDay-button").click()
     checkday("daily")
