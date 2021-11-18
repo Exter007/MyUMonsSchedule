@@ -8,6 +8,7 @@ import smtplib
 from getpass import getpass
 import imghdr
 import sys
+from datetime import datetime
 
 from discordwebhook import Discord
 import requests
@@ -32,6 +33,24 @@ passw = ""
 FIN DES VARS
 """
 
+
+def checkday(moment):
+    j = datetime.today().weekday()
+    if moment == "daily":
+        if j == 7:
+            driver.find_element(
+                By.CLASS_NAME, "fc-icon-right-single-arrow").click()
+        elif j == 6:
+            driver.find_element(
+                By.CLASS_NAME, "fc-icon-right-single-arrow").click()
+            driver.find_element(
+                By.CLASS_NAME, "fc-icon-right-single-arrow").click()
+    else:
+        if j == 6 or j == 7:
+            driver.find_element(
+                By.CLASS_NAME, "fc-icon-right-single-arrow").click()
+
+
 # Opening selenium webdriver
 options = Options()
 options.headless = True
@@ -52,9 +71,11 @@ driver.set_window_size(1920, 1080)
 if sys.argv[1] == "daily":
     print("Daily Mode")
     driver.find_element(By.CLASS_NAME, "fc-agendaDay-button").click()
+    checkday("daily")
 else:
     print("Weekly Mode")
     driver.find_element(By.CLASS_NAME, "fc-agendaWeek-button").click()
+    checkday("")
 driver.get_screenshot_as_file("./screenshot.png")
 driver.quit()
 
