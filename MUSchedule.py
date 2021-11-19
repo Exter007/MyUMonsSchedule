@@ -26,7 +26,7 @@ Sender_Email = ""
 Reciever_Email = ""
 
 # Fichier config
-config_file = open(f"{cwd}/config/{login_file_name}.txt", "r")
+config_file = open(f"./config/{login_file_name}.txt", "r")
 # Adresse mail UMons (matricule@umons.ac.be)
 user = config_file.readline().strip()
 # Mot de passe UMons
