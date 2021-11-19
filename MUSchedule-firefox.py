@@ -23,10 +23,12 @@ Sender_Email = ""
 # Adresse mail GMAIL receveur
 Reciever_Email = ""
 
+# Fichier config
+config_file = open("config/login.txt", "r")
 # Adresse mail UMons (matricule@umons.ac.be)
-user = ""
+user = config_file.readline().strip()
 # Mot de passe UMons
-passw = ""
+passw = config_file.readline().strip()
 """
 FIN DES VARS
 """
