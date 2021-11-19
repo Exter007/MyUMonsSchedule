@@ -1,4 +1,9 @@
 import hashlib
+import os
+
+
+cwd = os.getcwd()
+login_file_name = "login"
 
 
 def confirm_input(_input):
@@ -82,10 +87,13 @@ def setup():
     return _mat, _pswd
 
 
-print("Welcome to the MyUMonsSchedule setup wizard.")
-mat, pswd = setup()
-encrypted_pswd = hashlib.sha256(pswd.encode()).hexdigest()
+if __name__ == "__main__":
+    print("Welcome to the MyUMonsSchedule setup wizard.")
+    print(cwd)
+    mat, pswd = setup()
+    encrypted_pswd = hashlib.sha256(pswd.encode()).hexdigest()
 
-with open("config/encrypted.txt", "w+") as config_file:
-    config_file.truncate()
-    config_file.write(encrypted_pswd)
+    with open("config/login.txt", "w+") as config_file:
+        config_file.truncate()
+        # config_file.write(encrypted_pswd)
+        config_file.write(f"{mat}@umons.ac.be\n{pswd}")
