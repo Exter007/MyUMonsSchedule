@@ -1,8 +1,7 @@
 import hashlib
-import os
+import os.path
 
-
-cwd = os.getcwd()
+path = os.path.realpath(__file__)[:-8]
 login_file_name = "login"
 
 

@@ -12,7 +12,7 @@ import tempfile
 import sys
 from datetime import datetime
 
-from setup import cwd, login_file_name
+from setup import path, login_file_name
 
 __author__ = "Pierre-Louis D'Agostino"
 __email__ = "200197@umons.ac.be"
@@ -26,7 +26,7 @@ Sender_Email = ""
 Reciever_Email = ""
 
 # Fichier config
-config_file = open(f"./config/{login_file_name}.txt", "r")
+config_file = open(f"{path}config/{login_file_name}.txt")
 # Adresse mail UMons (matricule@umons.ac.be)
 user = config_file.readline().strip()
 # Mot de passe UMons
