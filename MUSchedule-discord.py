@@ -16,6 +16,8 @@ import json
 import feedparser
 import subprocess
 
+from setup import login_file_name, path
+
 __author__ = "Pierre-Louis D'Agostino"
 __email__ = "200197@umons.ac.be"
 
@@ -23,12 +25,15 @@ __email__ = "200197@umons.ac.be"
 VARIABLES GLOBALES
 """
 # URL discord webhook (à créer via les param. d'un channel discord)
-discord = Discord(url="")
+url = ""
+discord = Discord(url=url)
 
+# Fichier config
+config_file = open(f"{path}config/{login_file_name}.txt")
 # Adresse mail UMons (matricule@umons.ac.be)
-user = ""
+user = config_file.readline().strip()
 # Mot de passe UMons
-passw = ""
+passw = config_file.readline().strip()
 """
 FIN DES VARS
 """
@@ -96,5 +101,8 @@ try:
             },
         ],
     )
-except:
+except ValueError as e:
+    print(e)
+except Exception as e:
+    print(e)
     print("Message not sent.")

@@ -12,6 +12,8 @@ import tempfile
 import sys
 from datetime import datetime
 
+from setup import path, login_file_name
+
 __author__ = "Pierre-Louis D'Agostino"
 __email__ = "200197@umons.ac.be"
 
@@ -23,10 +25,12 @@ Sender_Email = ""
 # Adresse mail GMAIL receveur
 Reciever_Email = ""
 
+# Fichier config
+config_file = open(f"{path}config/{login_file_name}.txt")
 # Adresse mail UMons (matricule@umons.ac.be)
-user = ""
+user = config_file.readline().strip()
 # Mot de passe UMons
-passw = ""
+passw = config_file.readline().strip()
 """
 FIN DES VARS
 """
