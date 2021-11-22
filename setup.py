@@ -45,10 +45,10 @@ def input_mat():
 
     if not check_matricule_format(_mat):
         print("Incorrect matricule format.")
-        input_mat()
+        return input_mat()
 
     if not confirm_input(_mat):
-        input_mat()
+        return input_mat()
 
     return _mat
 
@@ -63,7 +63,7 @@ def input_password():
     _pswd = input("Please enter your UMons password >> ")
 
     if not confirm_input(_pswd):
-        input_password()
+        return input_password()
 
     return _pswd
 
@@ -88,7 +88,6 @@ def setup():
 
 if __name__ == "__main__":
     print("Welcome to the MyUMonsSchedule setup wizard.")
-    print(cwd)
     mat, pswd = setup()
     encrypted_pswd = hashlib.sha256(pswd.encode()).hexdigest()
 
