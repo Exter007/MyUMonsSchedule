@@ -26,7 +26,7 @@ __email__ = "200197@umons.ac.be"
 VARIABLES GLOBALES
 """
 # URL discord webhook (à créer via les param. d'un channel discord)
-url = "https://discord.com/api/webhooks/903642789051502712/ovwpTvimcjHsvkbm77hpmbRQ3Qb-m8J3viuQpzMGEYsW8rjQzm64ey8wsTaRvqiO7bjT"
+url = ""
 discord = Discord(url=url)
 
 # Fichier config
