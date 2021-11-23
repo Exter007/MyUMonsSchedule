@@ -89,6 +89,17 @@ def setup():
     return _mat, _pswd
 
 
+def encrypt_login(mat_, pswd_, file):
+    with open(file, "wb") as f:
+        f.truncate()
+        pickle.dump([mat_, pswd_], f)
+
+
+def retrieve_login(file):
+    with open(file, "rb") as f:
+        return pickle.load(f)
+
+
 if __name__ == "__main__":
     print("Welcome to the MyUMonsSchedule setup wizard.")
     mat, pswd = setup()
@@ -100,15 +111,6 @@ if __name__ == "__main__":
     # how to save public and private keys to files
     # encrypt.save_public_key("./keys/public_key.pem", public_key)
     # encrypt.save_private_key("./keys/private_key.pem", private_key)
-
-    def encrypt_login(mat, pswd, file):
-        with open(file, "wb") as f:
-            f.truncate()
-            pickle.dump([mat, pswd], f)
-
-    def retrieve_login(file):
-        with open(file, "rb") as f:
-            return pickle.load(f)
 
     public_key = encrypt.read_public_key("./keys/public_key.pem")
     private_key = encrypt.read_private_key("./keys/private_key.pem")

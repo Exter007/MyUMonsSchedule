@@ -16,7 +16,8 @@ import json
 import feedparser
 import subprocess
 
-from setup import login_file_name, path
+import encrypt
+from setup import login_file_name, path, retrieve_login
 
 __author__ = "Pierre-Louis D'Agostino"
 __email__ = "200197@umons.ac.be"
@@ -29,11 +30,17 @@ url = ""
 discord = Discord(url=url)
 
 # Fichier config
-config_file = open(f"{path}config/{login_file_name}.txt")
+config_file = open(f"{path}config/{login_file_name}.idd")
+# Clé privée
+private_key = encrypt.read_private_key("./keys/private_key.pem")
+# Mot de passe et matricule encryptés
+encrypted_mat, encrypted_pswd = retrieve_login("./config/login.idd")
+# Matricule décrypté
+mat = encrypt.decrypt(encrypted_mat, private_key).decode()
 # Adresse mail UMons (matricule@umons.ac.be)
-user = config_file.readline().strip()
-# Mot de passe UMons
-passw = config_file.readline().strip()
+user = f"{mat}@umons.ac.be"
+# Mot de passe UMons décrypté
+passw = encrypt.decrypt(encrypted_pswd, private_key).decode()
 """
 FIN DES VARS
 """
