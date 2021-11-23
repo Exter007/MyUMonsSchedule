@@ -46,16 +46,16 @@ FIN DES VARS
 def checkday(moment):
     j = datetime.today().weekday()
     if moment == "daily":
-        if j == 7:
+        if j == 6:
             driver.find_element(
                 By.CLASS_NAME, "fc-icon-right-single-arrow").click()
-        elif j == 6:
+        elif j == 5:
             driver.find_element(
                 By.CLASS_NAME, "fc-icon-right-single-arrow").click()
             driver.find_element(
                 By.CLASS_NAME, "fc-icon-right-single-arrow").click()
     else:
-        if j == 6 or j == 7:
+        if j == 5 or j == 6:
             driver.find_element(
                 By.CLASS_NAME, "fc-icon-right-single-arrow").click()
 
