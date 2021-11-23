@@ -1,8 +1,1 @@
-[23-11-2021 <> 23:20:30]Script initialized.
-[23-11-2021 <> 23:20:30]Bot initialized.
-
-[23-11-2021 <> 23:20:30]Script initialized.
-[23-11-2021 <> 23:20:30]Bot initialized.
-[23-11-2021 <> 23:20:35]Latency evaluated : 0 ms
-[23-11-2021 <> 23:21:16]Client running.
 
