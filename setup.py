@@ -1,5 +1,6 @@
-import hashlib
 import os.path
+import encrypt
+import pickle
 
 path = os.path.realpath(__file__)[:-8]
 login_file_name = "login"
@@ -45,10 +46,10 @@ def input_mat():
 
     if not check_matricule_format(_mat):
         print("Incorrect matricule format.")
-        input_mat()
+        return input_mat()
 
     if not confirm_input(_mat):
-        input_mat()
+        return input_mat()
 
     return _mat
 
@@ -63,7 +64,7 @@ def input_password():
     _pswd = input("Please enter your UMons password >> ")
 
     if not confirm_input(_pswd):
-        input_password()
+        return input_password()
 
     return _pswd
 
@@ -74,9 +75,11 @@ def final_confirmation(_mat, _pswd):
     print(f"Matricule   : {_mat}")
     print(f"E-mail      : {_mat}@umons.ac.be")
     print(f"Password    : {_pswd}")
+    # TODO : bug here if we have a wrong input for confirmation
     if not confirm(input("Are these informations correct ? (y/n) >> ")):
         print("We will re-run the wizard in order to change your information.")
         setup()
+    return True
 
 
 def setup():
@@ -88,11 +91,36 @@ def setup():
 
 if __name__ == "__main__":
     print("Welcome to the MyUMonsSchedule setup wizard.")
-    print(cwd)
     mat, pswd = setup()
-    encrypted_pswd = hashlib.sha256(pswd.encode()).hexdigest()
 
-    with open("config/login.txt", "w+") as config_file:
-        config_file.truncate()
-        # config_file.write(encrypted_pswd)
-        config_file.write(f"{mat}@umons.ac.be\n{pswd}")
+    # how to generate public and private keys
+    # private_key = encrypt.generate_private_key()
+    # public_key = encrypt.generate_public_key(private_key)
+    #
+    # how to save public and private keys to files
+    # encrypt.save_public_key("./keys/public_key.pem", public_key)
+    # encrypt.save_private_key("./keys/private_key.pem", private_key)
+
+    def encrypt_login(mat, pswd, file):
+        with open(file, "wb") as f:
+            f.truncate()
+            pickle.dump([mat, pswd], f)
+
+    def retrieve_login(file):
+        with open(file, "rb") as f:
+            return pickle.load(f)
+
+    public_key = encrypt.read_public_key("./keys/public_key.pem")
+    private_key = encrypt.read_private_key("./keys/private_key.pem")
+
+    encrypted_mat = encrypt.encrypt(mat.encode(), public_key)
+    encrypted_pswd = encrypt.encrypt(pswd.encode(), public_key)
+
+    encrypt_login(encrypted_mat, encrypted_pswd, "./config/login.idd")
+
+    # how to get encrypted mat and encrypted pswd from the login.idd file
+    # read_mat, read_pswd = retrieve_login("./config/login.idd")
+    #
+    # how to get decrypted mat and decrypted pswd from the login.idd file
+    # read_data = retrieve_login("./config/login.idd")
+    # read_mat, read_pswd = encrypt.decrypt(read_data[0], private_key), encrypt.decrypt(read_data[1], private_key)
