@@ -77,14 +77,37 @@ print("Finding schedule...")
 # Find schedule and take screenshot
 driver.get("https://gestacumons.umons.ac.be/MyUmons/mon_horaire.php")
 driver.set_window_size(1920, 1080)
-if len(sys.argv) == 2 and sys.argv[1] == "daily":
+if len(sys.argv) >= 2 and sys.argv[1] == "daily":
     print("Daily Mode")
     driver.find_element(By.CLASS_NAME, "fc-agendaDay-button").click()
     checkday("daily")
+elif len(sys.argv) >= 2 and sys.argv[1] == "weekly":
+    print("Weekly Mode")
+    driver.find_element(By.CLASS_NAME, "fc-agendaWeek-button").click()
+    checkday("")
 else:
     print("Weekly Mode")
     driver.find_element(By.CLASS_NAME, "fc-agendaWeek-button").click()
     checkday("")
+if len(sys.argv) >= 3 and "next" in sys.argv:
+    print("Next activated")
+    if len(sys.argv) == 4:
+        try:
+            if int(sys.argv[3]) <= 0:
+                raise ValueError
+            for i in range(0, int(sys.argv[3])):
+                driver.find_element(
+                    By.CLASS_NAME, "fc-icon-right-single-arrow").click()
+        except:
+            print(
+                "Erreur: Saut de jour/semaine impossible. (Doit être un entier positif)")
+    elif len(sys.argv) == 3:
+        try:
+            driver.find_element(
+                By.CLASS_NAME, "fc-icon-right-single-arrow").click()
+        except:
+            print(
+                "Erreur: Saut de jour/semaine impossible. (Doit être un entier positif)")
 tmp = tempfile.NamedTemporaryFile(suffix=".png", mode='wb')
 png = driver.get_screenshot_as_png()
 tmp.write(png)
