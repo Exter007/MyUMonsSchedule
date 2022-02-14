@@ -19,13 +19,13 @@ Update 29/10 : Discord module is working.
 
 Update 03/11 : Temp files added instead of "screenshot.png" (not for Discord module)
 
-Update 14/02/22 : Setup changed (hiding the password during setup and during final_confirmation)
-
 Update 18/11 :
   - Website creation (coming soon) including connection with your UMons account.
   - Creating database (alwaysdata) of users using MUSchedule to send them screenshots by email (with cron)
   - Trying to download ics for each user (difficult due to authentification)
   - If we can download ics for each user, the next step is to sync with Google Calendar (cron?/auto?/...?)
+
+Update 14/02/22 : Setup changed (hiding the password during setup and during final_confirmation)
 
 ### In the next versions (outdated)
 1) Cron ?
