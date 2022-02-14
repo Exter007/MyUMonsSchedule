@@ -5,6 +5,7 @@
 2) **DON'T FORGET** to change your Gmail/Google config only for the **SENDER**. There are only 2 easy steps to do.
 3) You are prompted for your Gmail password (*sender only*) while running the script.
 4) Use "python /path-to-file.py ["daily"]" -> Daily is an optionnal argument if you want to show the daily-view of your schedule (instead of weekly by default).
+5) **Be carefull :** Please make sure that you installed all dependencies (easy with pip for python)
 
 PS : If you want to change from Gmail to another provider, don't forget to change the SMTP servers.
 
@@ -17,6 +18,8 @@ Update 29/10 : Working on Fedora (geckodriver needed too)
 Update 29/10 : Discord module is working.
 
 Update 03/11 : Temp files added instead of "screenshot.png" (not for Discord module)
+
+Update 14/02/22 : Setup changed (hiding the password during setup and during final_confirmation)
 
 Update 18/11 :
   - Website creation (coming soon) including connection with your UMons account.
