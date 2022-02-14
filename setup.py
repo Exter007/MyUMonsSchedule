@@ -1,6 +1,8 @@
+from getpass import getpass
 import os.path
 import encrypt
 import pickle
+import pwinput, random
 
 path = os.path.realpath(__file__)[:-8]
 login_file_name = "login"
@@ -61,12 +63,12 @@ def input_password():
     confirm its input, re-run the method.
     :return: The matricule (String) if correctly formatted and confirmed by the user
     """
-    _pswd = input("Please enter your UMons password >> ")
-
-    if not confirm_input(_pswd):
+    _pswd = pwinput.pwinput(prompt="Please enter your UMons password >> ")
+    _pswd_hide = hide(_pswd, False)
+    if not confirm_input(_pswd_hide):
         return input_password()
 
-    return _pswd
+    return (_pswd, _pswd_hide)
 
 
 def final_confirmation(_mat, _pswd):
@@ -84,9 +86,32 @@ def final_confirmation(_mat, _pswd):
 
 def setup():
     _mat = input_mat()
-    _pswd = input_password()
-    final_confirmation(_mat, _pswd)
+    _pswd, _pswd_hide = input_password()
+    final_confirmation(_mat, _pswd_hide)
     return _mat, _pswd
+
+def hide(password : str, randomize : bool) :
+    var = ""
+    if(randomize) :
+        randomI = -1
+        randomV = random.randint(0, (int) (len(password)/2))
+    for i in range(len(password)) :
+        if(randomize) :
+            randomI += 1
+            if(randomI == randomV) :
+                randomI = -1
+                var += "*"
+            else :
+                if i%3 == 0 :
+                    var += password[i]
+                else :
+                    var += "*"
+        else :
+            if i%3 == 0 :
+                var += password[i]
+            else :
+                var += "*"
+    return var
 
 
 def encrypt_login(mat_, pswd_, file):
