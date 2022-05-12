@@ -1,6 +1,6 @@
 # MyUMonsSchedule
 ## Use MyUMonsSchedule to sync your personalized calendar (MyUMons schedule) with Google Calendar !
-### Or use MyUMonsSchedule python script to send a screenshot (by email (Gmail) or on Discord) of your MyUMons schedule.
+#### Or use MyUMonsSchedule python script to send a screenshot (by email (Gmail) or on Discord) of your MyUMons schedule.
 #### If you use it on Windows, take care to download geckodriver (and add it to PATH*): https://github.com/mozilla/geckodriver/releases
 \* Just run it in the folder where the main script is located. You can close the window right after.
 
