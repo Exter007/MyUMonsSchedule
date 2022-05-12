@@ -11,7 +11,7 @@ To use the iCalendar feature, you must have Geckodriver in path (in /etc/bin for
 1) You must modify the script to **CHANGE** the global vars. (UMons username and password)
 2) Run the "main_calendar.py" script
 After execution, a new file will be created "horaire.ics". This file contains all the events of your calendar. The default timezone is not correct if you want to use this ics.
-3) Run the timezone.sh script to change the timezone in "horaire.ics"
+3) Run the timezone.sh script to change the timezone in "horaire.ics".
 After this step, your ics file will be correct.
 4) You have now two options :
     * Option 1 : Import this ics file directly in Google Calendar (or other calendar) but **event changes will not be shown in your calendar** to sync the events, go to Option 2. If you don't want to sync, don't follow the next steps.
