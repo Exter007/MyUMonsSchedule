@@ -1,0 +1,1 @@
+sed -i '5i\X-WR-TIMEZONE:Europe/Brussels' horaire.ics
